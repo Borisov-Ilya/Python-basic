@@ -16,8 +16,7 @@ class SelenideSearchTest(unittest.TestCase):
 
         # 2. Выполнить поиск слова “selenide”
         search = driver.find_element(By.NAME, 'q')
-        search.send_keys('selenide')
-        search.send_keys(Keys.RETURN)
+        search.send_keys('selenide' + Keys.RETURN)
 
         # 3. Проверить, что первый результат – ссылка на сайт selenide.org
         assert 'selenide.org' in driver.find_element(By.TAG_NAME, 'cite').text
@@ -36,3 +35,4 @@ class SelenideSearchTest(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close()
+        self.driver.quit()
