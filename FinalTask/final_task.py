@@ -22,13 +22,13 @@ class SelenideSearchTest(unittest.TestCase):
         assert 'selenide.org' in driver.find_element(By.TAG_NAME, 'cite').text
 
         # 4. Перейти в раздел поиска изображений
-        driver.find_element(By.LINK_TEXT, 'Images').click()
+        driver.find_element(By.XPATH, '//div[@role="navigation"]//*[text()="Картинки" or text()="Images"]').click()
 
         # 5. Проверить, что первое изображение неким образом связано с сайтом selenide.org
         assert 'Selenide' in driver.find_element(By.XPATH, '//*[@id="islrg"]/div[1]/div[1]/h3').text
 
         # 6. Вернуться в раздел поиска Все
-        driver.find_element(By.LINK_TEXT, 'Все').click()
+        driver.find_element(By.XPATH, '//span[@aria-current="page"]/..//*[text()="Все" or text()="All"]').click()
 
         # 7. Проверить, что первый результат такой же, как и на шаге 3.
         assert 'selenide.org' in driver.find_element(By.TAG_NAME, 'cite').text
